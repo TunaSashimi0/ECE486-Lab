@@ -34,7 +34,7 @@ function [Mp, tr, ts,MpIndex, t_10index,t_90index,tssIndex] = StepResponseMetric
 % Mp is the percentage overshoot -- so if the steady state value is 5.0 and
 % the maximum response is 7.5, Mp = 50%.  If the maximum response was 4.9,
 % Mp is 0.
-Mp = (MaxResponse - ssVal)/ssVal;
+Mp = 100 * (MaxResponse - ssVal)/ssVal;
  
 %tr
 % tr is the time required for the response to rise from 10% of the
@@ -86,25 +86,25 @@ if(Mp > 0)
     text(t(MpIndex),y(MpIndex),'\leftarrow M_p',...
         'HorizontalAlignment','left')
     line([t(MpIndex);t(MpIndex)],[0,y(MpIndex)],...
-        'Color','k','LineWidth',0.5,'LineStyle',':')
+        'Color','k','LineWidth',0.5,'LineStyle',':', 'HandleVisibility','off')
 end
 %document tr
 text(t(t_10index),y(t_10index),'\leftarrow 10%',...
     'HorizontalAlignment','left')
 line([t(t_10index);t(t_10index)],[0,y(t_10index)],...
-    'Color','k','LineWidth',0.5,'LineStyle',':')
+    'Color','k','LineWidth',0.5,'LineStyle',':','HandleVisibility','off')
  
 text(t(t_90index),y(t_90index),'\leftarrow 90%',...
     'HorizontalAlignment','left')
 line([t(t_90index);t(t_90index)],[0,y(t_90index)],...
-    'Color','k','LineWidth',0.5,'LineStyle',':')
+    'Color','k','LineWidth',0.5,'LineStyle',':','HandleVisibility','off')
  
 % YOU DOCUMENT tss IN THE SAME WAY AS tr AND Mp
 % document tss
 text(t(tssIndex),y(tssIndex),'\leftarrow tss',...
         'HorizontalAlignment','left')
 line([t(tssIndex);t(tssIndex)], [0, y(tssIndex)],...
-    'Color','k','LineWidth',0.5,'LineStyle',':')
+    'Color','k','LineWidth',0.5,'LineStyle',':','HandleVisibility','off')
 
 title({'M_p, t_r, and t_s for a transfer function _{ECE 486}';date})
 % Label the axes:
